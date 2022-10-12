@@ -10,7 +10,7 @@ Multi-language wrapper (Python, Bash) for Render Deployment API.
 
 | Item | Bash | Python | Info | 
 | --- | --- | --- | --- | --- |
-| Create Static-Site | ❌ | ❌ | Create a static-site / Subdomain Deployment |
+
 
 <br />
 
