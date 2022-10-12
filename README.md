@@ -8,9 +8,9 @@ Multi-language wrapper (Python, Bash) for Render Deployment API.
 
 > Product Roadmap 
 
-| Item | Bash | Python | Info | 
-| --- | --- | --- | --- | --- |
-
+| Item | Bash | Python | Info |
+| --- | --- | --- | --- |
+| Deploy Static Site (subdomain) | ❌ | ❌ | - |
 
 <br />
 
