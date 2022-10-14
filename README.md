@@ -11,8 +11,8 @@ Multi-language wrapper (Python, Bash) for Render Deployment API.
 | Item | Bash | Python | Info |
 | --- | --- | --- | --- |
 | Deploy Static Site (subdomain) | ❌ | ❌ | - |
-| Deploy Web Service `Flask API` | ❌ | ❌ | - |
-| Deploy Web Service `Django API` | ❌ | ❌ | - |
+| Deploy Web Service `Flask` | ❌ | ❌ | [docs](./docs/python/deploy-flask.md) |
+| Deploy Web Service `Django` | ❌ | ❌ | - |
 
 <br />
 
