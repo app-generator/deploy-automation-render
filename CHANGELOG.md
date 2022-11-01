@@ -5,5 +5,4 @@
 
 - Code the basic structure
 - Added CLI input parser 
-- Added helpers: `check` 
-  - 
+- Added helpers: `check`, `owner`
