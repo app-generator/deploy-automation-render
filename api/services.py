@@ -3,8 +3,11 @@
 Copyright (c) 2019 - present AppSeed.us
 """
 
-import requests
+import requests, json
+
 from .common   import *
+from .helpers  import *
+from .owners   import *
 
 def list_services():
     """
@@ -14,45 +17,78 @@ def list_services():
 
     url = f"{URL}/v1/services"
 
-    params = {
-        'limit': '20',
-    }
     try:
-        response = requests.get(url, params=params, headers=HEADERS)
-        return response
+        response = requests.get(url, headers=HEADERS)
+
+        if 200 != response.status_code:
+            raise Exception( response.text )
+
+        if DEBUG:
+            print( response.text ) 
+
+        return json.loads( response.text )
+
     except Exception as e:
         print(e)
-        return False
+        return None
 
-
-def create_service(d_obj):
+def deploy_flask(aRepo, aEntryPoint='app:app'):
     """
     Referance: https://api-docs.render.com/reference/create-service
     """
 
-    url = f"{URL}/v1/services"
-
-    payload = {
-        'autoDeploy': 'yes',
-        'serviceDetails': {
-            'publishPath': 'public',
-            'pullRequestPreviewsEnabled': 'no',
-        },
-        'type': 'static_site',
-        'name': 'react-dash-board',
-        'ownerId': '123456',
-        'repo': 'https://github.com/app-generator/django-react-soft-dashboard',
-        'branch': 'main',
-    }
+    url     = f"{URL}/v1/services"
 
     try:
+
+        ownerId      = get_owner()
+        service_name = nameFromRepo( aRepo ) + '-' + randStr() 
+
+        if not ownerId:
+            raise Exception( 'Error getting owner' )
+
+        payload = {
+            'autoDeploy': 'yes',
+            'envVars': [
+                {
+                    "key": "DEBUG",
+                    "value": "True"
+                }
+            ],            
+            'serviceDetails': {
+                'env':  'python',
+                "envSpecificDetails":{
+                    "buildCommand":"pip install --upgrade pip ; pip install -r requirements.txt",
+                    "startCommand":f"gunicorn {aEntryPoint}"
+                },
+            },
+            'type': 'web_service',
+            'environment':  'python',
+            'name': service_name,
+            'ownerId': ownerId,
+            'repo': aRepo,
+        }
+
         response = requests.post(url, json=payload, headers=HEADERS)
-        return response
+
+        # HTTP 201 = Resource Created
+        if 201 != response.status_code:
+            raise Exception( response.text )
+
+        response_json = json.loads( response.text )
+
+        deploy_id  = response_json["deployId"]
+        deploy_url = response_json["service"]["serviceDetails"]["url"]
+        
+        if DEBUG:
+
+            print(" > Deploy ID ["+deploy_id+"] -> " + deploy_url)
+
+        return json.loads( response.text )
+
     except Exception as e:
         print(e)
-        return False
-
-
+        return None 
 
 def retrieve_service(d_obj):
     """

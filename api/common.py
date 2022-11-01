@@ -11,6 +11,9 @@ DEBUG = os.getenv("DEBUG")
 # Render authentication API
 RENDER_API_KEY = os.getenv("RENDER_API_KEY")
 
+# Render authentication API
+RENDER_OWNER_ID = os.getenv("RENDER_OWNER_ID")
+
 # api header
 HEADERS = {
     'accept': 'application/json',
@@ -19,4 +22,3 @@ HEADERS = {
 
 # api url
 URL="https://api.render.com"
-

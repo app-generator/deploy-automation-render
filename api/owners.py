@@ -15,10 +15,6 @@ def list_authorized_users_and_teams():
 
     url = f"{URL}/v1/owners"
 
-    params = {
-        'limit': '20',
-        'name': '',
-    }
     try:
 
         # url="https://api.render.com/v1/owners"
@@ -69,11 +65,15 @@ def list_owners():
 
 def get_owner():
 
+    if RENDER_OWNER_ID:
+        return RENDER_OWNER_ID
+
     all_owners = list_owners()
 
     if not all_owners or len( all_owners ) == 0:
         return None 
 
+    # pick the first one
     retVal = all_owners[0]
 
     if DEBUG:
