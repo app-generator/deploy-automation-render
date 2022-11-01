@@ -1,6 +1,10 @@
-import requests
-from util import *
+# -*- encoding: utf-8 -*-
+"""
+Copyright (c) 2019 - present AppSeed.us
+"""
 
+import requests
+from .common   import *
 
 def list_services():
     """

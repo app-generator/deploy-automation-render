@@ -1,6 +1,3 @@
-# Render API Wrapper 
+# Render API Wrapper of `Python`
 
-Common Part of the docs:
-
-- [Bash Wrapper](./bash)
-- [Python Wrapper](./python)
+ToDo
