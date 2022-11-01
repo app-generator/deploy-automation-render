@@ -1,8 +1,16 @@
-# Render API Wrapper 
+# Render API Wrapper - `Python`
 
-> Status: DEVELOPMENT
+Python wrapper for [Render](https://render.com/) Deployment API - actively supported by **[AppSeed](https://appseed.us/)**.
 
-Python wrapper for Render Deployment API.
+<br />
+
+> Roadmap 
+
+| Item | Python | Info |
+| --- | --- | --- |
+| Deploy Web Service `Flask` | ✅ | [docs](./docs/python/deploy-flask.md) |
+| Deploy Static Site (subdomain) | ❌ | - |
+| Deploy Web Service `Django` | ❌ | - |
 
 <br />
 
@@ -49,16 +57,6 @@ $ $env:DEBUG = "1"                           # enables verbose output
 | `python .\runner.py ****` | Get First Owner | `rnd_TgNuy1N*****` | - |
 | --- | --- | --- | --- |
 | `python .\runner.py deploy_flask REPO_URL` | Deploy Flask APP | ` > Deploy ID [dep-cdgjfbien0hj5ea9cbm0]` | - |
-
-<br />
-
-> Product Roadmap 
-
-| Item | Python | Info |
-| --- | --- | --- |
-| Deploy Static Site (subdomain) | ❌ | - |
-| Deploy Web Service `Flask` | ✅ | [docs](./docs/python/deploy-flask.md) |
-| Deploy Web Service `Django` | ❌ | - |
 
 <br />
 
