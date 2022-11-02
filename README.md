@@ -51,10 +51,10 @@ $ $env:DEBUG = "1"                           # enables verbose output
 
 | Item | Info | Sample Output | HELP |
 | --- | --- | --- | --- |
-| `python .\runner.py` | CLI Help | `Usage: runner.py COMMAND Argument` | - |
+| `python .\runner.py` | CLI Help | `Usage: runner.py COMMAND ARGS` | - |
 | `python .\runner.py check` | Print API_KEY | `rnd_TgNuy1N*****` | - |
 | `python .\runner.py all_owners` | Print all owners | `['usr-ccteupaen****', 'tea-ccts5053t398****']` | - |
-| `python .\runner.py ****` | Get First Owner | `rnd_TgNuy1N*****` | - |
+| `python .\runner.py owner` | Get First Owner | `rnd_TgNuy1N*****` | - |
 | --- | --- | --- | --- |
 | `python .\runner.py deploy_flask REPO_URL` | Deploy Flask APP | ` > Deploy ID [dep-cdgjfbien0hj5ea9cbm0]` | - |
 
