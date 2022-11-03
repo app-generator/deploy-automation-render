@@ -1,5 +1,11 @@
 # Change Log
 
+## [1.0.2] 2022-11-03
+### Improvements
+
+- Code refactoring 
+- Improved Logging
+
 ## [1.0.1] 2022-11-03
 ### Improvements
 
