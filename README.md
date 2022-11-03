@@ -8,8 +8,8 @@ Python wrapper for [Render](https://render.com/) Deployment API - actively suppo
 
 | Item | Python | Info |
 | --- | --- | --- |
+| Deploy Static Site | ✅ | [docs](./docs/python/deploy-static.md) |
 | Deploy Web Service `Flask` | ✅ | [docs](./docs/python/deploy-flask.md) |
-| Deploy Static Site (subdomain) | ❌ | - |
 | Deploy Web Service `Django` | ❌ | - |
 
 <br />
@@ -57,6 +57,8 @@ $ $env:DEBUG = "1"                           # enables verbose output
 | `python .\runner.py owner` | Get First Owner | `rnd_TgNuy1N*****` | - |
 | --- | --- | --- | --- |
 | `python .\runner.py deploy_flask REPO_URL` | Deploy Flask APP | ` > Deploy ID [dep-cdgjfbien0hj5ea9cbm0]` | - |
+| --- | --- | --- | --- |
+| `python .\runner.py deploy_static REPO_URL` | Deploy React, Vue | ` > Deploy ID [dep-cdgjfbien0hj5ea9cbm0]` | - |
 
 <br />
 
