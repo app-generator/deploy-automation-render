@@ -39,49 +39,6 @@ def list_authorized_users_and_teams():
         print(e)
         return None
 
-def list_owners():
-
-    # JSON 
-    autz_users = list_authorized_users_and_teams()
-
-    if not autz_users:
-        return None 
-
-    retVal = []
-
-    try:
-
-        for item in autz_users:
-            retVal.append( item['owner']['id'] )
-
-        if DEBUG:
-            print( str( retVal ) )
-
-        return retVal
-
-    except Exception as e:
-        print(e)
-        return None
-
-def get_owner():
-
-    if RENDER_OWNER_ID:
-        return RENDER_OWNER_ID
-
-    all_owners = list_owners()
-
-    if not all_owners or len( all_owners ) == 0:
-        return None 
-
-    # pick the first one
-    retVal = all_owners[0]
-
-    if DEBUG:
-        print( str( retVal ) )
-
-    # return the first one
-    return retVal
-
 def retrieve_user_or_team(d_obj):
     """
     Referance: https://api-docs.render.com/reference/get-owner
@@ -98,3 +55,46 @@ def retrieve_user_or_team(d_obj):
         print(e)
         return False
 
+def list_owners():
+
+    # JSON 
+    autz_users = list_authorized_users_and_teams()
+
+    if not autz_users:
+        return None 
+
+    retVal = []
+
+    try:
+
+        for item in autz_users:
+            retVal.append( item['owner']['id'] )
+
+        #if DEBUG:
+        print( str( retVal ) )
+
+        return retVal
+
+    except Exception as e:
+        print(e)
+        return None
+
+def get_owner():
+
+    # If present in ENV, return the value
+    if RENDER_OWNER_ID:
+        return RENDER_OWNER_ID
+
+    all_owners = list_owners()
+
+    if not all_owners or len( all_owners ) == 0:
+        return None 
+
+    # pick the first one
+    retVal = all_owners[0]
+
+    #if DEBUG:
+    print( str( retVal ) )
+
+    # return the first one
+    return retVal

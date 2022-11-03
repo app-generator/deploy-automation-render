@@ -89,9 +89,8 @@ def deploy_flask(aRepo, aEntryPoint='app:app'):
         deploy_id  = response_json["deployId"]
         deploy_url = response_json["service"]["serviceDetails"]["url"]
         
-        if DEBUG:
-
-            print(" > Deploy ID ["+deploy_id+"] -> " + deploy_url)
+        #if DEBUG:
+        print(" > Deploy ID ["+deploy_id+"] -> " + deploy_url)
 
         return json.loads( response.text )
 
@@ -143,9 +142,8 @@ def deploy_static(aRepo, aNodeVer=NODE_14):
         deploy_id  = response_json["deployId"]
         deploy_url = response_json["service"]["serviceDetails"]["url"]
         
-        if DEBUG:
-
-            print(" > Deploy ID ["+deploy_id+"] -> " + deploy_url)
+        #if DEBUG:
+        print(" > Deploy ID ["+deploy_id+"] -> " + deploy_url)
 
         return json.loads( response.text )
 

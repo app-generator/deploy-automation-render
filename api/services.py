@@ -69,7 +69,6 @@ def update_service(d_obj):
         print(e)
         return False
 
-
 def delete_service(d_obj):
     """
     Referance: https://api-docs.render.com/reference/delete-service
