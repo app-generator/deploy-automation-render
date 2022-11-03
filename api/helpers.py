@@ -9,7 +9,7 @@ import random, string
 from .common   import *
 
 def randStr( aLen=5 ):
-    return ''.join(random.choices(string.ascii_letters + string.digits, k=aLen ))
+    return ''.join(random.choices(string.ascii_letters + string.digits, k=aLen )).lower()
 
 def nameFromRepo( aRepoURL ):
 
