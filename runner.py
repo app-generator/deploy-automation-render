@@ -48,8 +48,13 @@ def parse_input( sys_argv ):
         if not RENDER_API_KEY:
             print(' > RENDER_API_KEY -> not found in environment' )
         else:
-            if DEBUG:
-                print(' > RENDER_API_KEY -> ' + str( RENDER_API_KEY ) )
+            ownerId = get_owner()
+
+            if ownerId:
+                print(' > Conn RENDER_API [OK], (default) ownerId=' + ownerId)
+            else:
+                print(' > Conn RENDER_API [ERR], (RENDER_API_KEY seems unusable)')        
+
         exit(1)
 
     if 'all_owners' == COMMAND:
