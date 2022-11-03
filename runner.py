@@ -13,6 +13,7 @@ ACTIONS = {
     'owner'          : ['NA'],
     'all_services'   : ['NA'],
     'deploy_flask'   : ['NA'],
+    'deploy_static'  : ['NA'],
 }
 
 def parse_input( sys_argv ):
@@ -80,6 +81,37 @@ def parse_input( sys_argv ):
 
         res = deploy_flask(REPO, ENTRY_POINT)
         exit(1)  
+
+    if 'deploy_static' == COMMAND:
+
+        REPO     = ARGUMENT 
+        NODE_VER = ARGUMENT2
+
+        if not REPO:
+            print('ERR: command ['+COMMAND+'] expects 2 inputs' )
+            print(' > runner create_service <REPO> <NODE_VER>' )
+            print(' > <REPO> = public repo to be deployed<ENTRY_POINT>' )
+            print(' > <NODE_VER> = Node Version, default='+NODE_14 )            
+            exit(1)
+
+        if not NODE_VER:
+            NODE_VER = NODE_14
+        else:
+
+            if '12' in NODE_VER:
+                NODE_VER = NODE_12
+            elif '14' in NODE_VER:
+                NODE_VER = NODE_14
+            elif '16' in NODE_VER:
+                NODE_VER = NODE_16
+            elif '18' in NODE_VER:
+                NODE_VER = NODE_18
+            else:
+                # Default to 14
+                NODE_VER = NODE_14
+
+        res = deploy_static( REPO, NODE_VER )
+        exit(1)          
 
 # Entry point
 if __name__ == "__main__": 
