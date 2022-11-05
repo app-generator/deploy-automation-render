@@ -1,5 +1,14 @@
 # Change Log
 
+## [1.0.3] 2022-11-05
+### Improvements
+
+- For static, load builder from ENV
+  - `RENDER_BUILDER`: defaults to NPM
+- Rename entry point
+  - `runner` -> `deployer`
+- `Update DOCS` (README)  
+
 ## [1.0.2] 2022-11-03
 ### Improvements
 
