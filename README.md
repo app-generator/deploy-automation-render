@@ -70,6 +70,8 @@ $ $env:DEBUG = "1"                           # enables verbose output
 | `python deployer.py all_owners` | Print all owners | `['usr-ccteupaen****', 'tea-ccts5053t398****']` | - |
 | `python deployer.py owner` | Get First Owner | `rnd_TgNuy1N*****` | - |
 | --- | --- | --- | --- |
+| `python deployer.py django REPO_URL` | Deploy Django APP | ` > Deploy ID [dep-cdgjfbien0hj5ea9cbm0]` | - |
+| --- | --- | --- | --- |
 | `python deployer.py flask REPO_URL` | Deploy Flask APP | ` > Deploy ID [dep-cdgjfbien0hj5ea9cbm0]` | - |
 | --- | --- | --- | --- |
 | `python deployer.py static REPO_URL` | Deploy React, Vue | ` > Deploy ID [dep-cdgjfbien0hj5ea9cbm0]` | - |
@@ -77,4 +79,4 @@ $ $env:DEBUG = "1"                           # enables verbose output
 <br />
 
 ---
-[Render API Wrapper](https://www.youtube.com/watch?v=RRbmOhTzkYo) - Free tool provided by [AppSeed](https://appseed.us/)
+[Render API Wrapper](https://www.youtube.com/watch?v=RRbmOhTzkYo) - Free Tool provided by [AppSeed](https://appseed.us/)

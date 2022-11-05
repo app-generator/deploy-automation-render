@@ -13,6 +13,7 @@ ACTIONS = {
     'owner'          : ['NA'],
     'all_services'   : ['NA'],
     'flask'          : ['NA'],
+    'django'         : ['NA'],
     'static'         : ['NA'],
 }
 
@@ -69,6 +70,24 @@ def parse_input( sys_argv ):
         res = list_services()
         exit(1)            
 
+    if 'django' == COMMAND:
+
+        REPO        = ARGUMENT 
+        ENTRY_POINT = ARGUMENT2
+
+        if not REPO:
+            print('ERR: command ['+COMMAND+'] expects 2 inputs' )
+            print(' > deployer ['+COMMAND+'] <REPO> <ENTRY_POINT>' )
+            print(' > <REPO> = public repo to be deployed<ENTRY_POINT>' )
+            print(' > <ENTRY_POINT> = WSGI entry point, default="core.wsgi:application"' )
+            exit(1)
+
+        if not ENTRY_POINT:
+            ENTRY_POINT = "core.wsgi:application"
+
+        res = deploy_django(REPO, ENTRY_POINT)
+        exit(1)  
+
     if 'flask' == COMMAND:
 
         REPO        = ARGUMENT 
@@ -76,7 +95,7 @@ def parse_input( sys_argv ):
 
         if not REPO:
             print('ERR: command ['+COMMAND+'] expects 2 inputs' )
-            print(' > deployer flask <REPO> <ENTRY_POINT>' )
+            print(' > deployer ['+COMMAND+'] <REPO> <ENTRY_POINT>' )
             print(' > <REPO> = public repo to be deployed<ENTRY_POINT>' )
             print(' > <ENTRY_POINT> = WSGI entry point, default="app:app"' )
             exit(1)
@@ -94,7 +113,7 @@ def parse_input( sys_argv ):
 
         if not REPO:
             print('ERR: command ['+COMMAND+'] expects 2 inputs' )
-            print(' > deployer static <REPO> <NODE_VER>' )
+            print(' > deployer ['+COMMAND+'] <REPO> <NODE_VER>' )
             print(' > <REPO> = public repo to be deployed<ENTRY_POINT>' )
             print(' > <NODE_VER> = Node Version, default='+NODE_14 )            
             exit(1)

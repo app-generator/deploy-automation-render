@@ -1,5 +1,13 @@
 # Change Log
 
+## [1.0.4] 2022-11-05
+### Improvements
+
+- Django Deployment 
+  - `python.exe deployer.py django <REPO> <ENTRY_POINT>`
+- Improved error checking
+- Improved runtime logs (if DEBUG=1)
+
 ## [1.0.3] 2022-11-05
 ### Improvements
 
