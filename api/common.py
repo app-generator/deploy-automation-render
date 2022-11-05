@@ -6,7 +6,7 @@ Copyright (c) 2019 - present AppSeed.us
 import os
 
 NODE_12="12.0.0"
-NODE_14="14.15.0"
+NODE_14="14.0.0"
 NODE_16="16.0.0"
 NODE_18="18.0.0"
 
