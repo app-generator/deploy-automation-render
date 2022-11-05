@@ -32,16 +32,19 @@ $ pip install -r requirements.txt
 $ # Unix / MacOs 
 $ export RENDER_API_KEY=<RENDER_API_KEY>     # mandatory
 $ export RENDER_OWNER_ID=<RENDER_OWNER_ID>   # optional
+$ export RENDER_BUILDER='npm'                # optional, <NPM or YARN>, defaults to NPM
 $ export DEBUG=1                             # enables verbose output
 $
 $ # Windows - CMD 
 $ set RENDER_API_KEY=<RENDER_API_KEY>        # mandatory
 $ set RENDER_OWNER_ID=<RENDER_OWNER_ID>      # optional
+$ set RENDER_BUILDER='npm'                   # optional, <NPM or YARN>, defaults to NPM
 $ set DEBUG=1                                # enables verbose output
 $
 $ # Windows - Powershell
 $ $env:RENDER_API_KEY = "<RENDER_API_KEY>"   # mandatory
 $ $env:RENDER_OWNER_ID = "<RENDER_OWNER_ID>" # optional
+$ $env:RENDER_BUILDER = "npm"                # optional, <NPM or YARN>, defaults to NPM
 $ $env:DEBUG = "1"                           # enables verbose output
 ```
 
@@ -51,14 +54,14 @@ $ $env:DEBUG = "1"                           # enables verbose output
 
 | Item | Info | Sample Output | HELP |
 | --- | --- | --- | --- |
-| `python .\runner.py` | CLI Help | `Usage: runner.py COMMAND ARGS` | - |
-| `python .\runner.py check` | Print API_KEY | `rnd_TgNuy1N*****` | - |
-| `python .\runner.py all_owners` | Print all owners | `['usr-ccteupaen****', 'tea-ccts5053t398****']` | - |
-| `python .\runner.py owner` | Get First Owner | `rnd_TgNuy1N*****` | - |
+| `python deployer.py` | CLI Help | `Usage: runner.py COMMAND ARGS` | - |
+| `python deployer.py check` | Print API_KEY | `rnd_TgNuy1N*****` | - |
+| `python deployer.py all_owners` | Print all owners | `['usr-ccteupaen****', 'tea-ccts5053t398****']` | - |
+| `python deployer.py owner` | Get First Owner | `rnd_TgNuy1N*****` | - |
 | --- | --- | --- | --- |
-| `python .\runner.py deploy_flask REPO_URL` | Deploy Flask APP | ` > Deploy ID [dep-cdgjfbien0hj5ea9cbm0]` | - |
+| `python deployer.py flask REPO_URL` | Deploy Flask APP | ` > Deploy ID [dep-cdgjfbien0hj5ea9cbm0]` | - |
 | --- | --- | --- | --- |
-| `python .\runner.py deploy_static REPO_URL` | Deploy React, Vue | ` > Deploy ID [dep-cdgjfbien0hj5ea9cbm0]` | - |
+| `python deployer.py static REPO_URL` | Deploy React, Vue | ` > Deploy ID [dep-cdgjfbien0hj5ea9cbm0]` | - |
 
 <br />
 
