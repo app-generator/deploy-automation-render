@@ -10,7 +10,7 @@ Python wrapper for [Render](https://render.com/) Deployment API - actively suppo
 | --- | --- | --- |
 | Deploy Static Site | ✅ | [docs](./docs/python/deploy-static.md) |
 | Deploy Web Service `Flask` | ✅ | [docs](./docs/python/deploy-flask.md) |
-| Deploy Web Service `Django` | ❌ | - |
+| Deploy Web Service `Django` | ✅ | [docs](./docs/python/deploy-django.md) |
 
 <br />
 
