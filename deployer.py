@@ -12,8 +12,8 @@ ACTIONS = {
     'all_owners'     : ['NA'],
     'owner'          : ['NA'],
     'all_services'   : ['NA'],
-    'deploy_flask'   : ['NA'],
-    'deploy_static'  : ['NA'],
+    'flask'          : ['NA'],
+    'static'         : ['NA'],
 }
 
 def parse_input( sys_argv ):
@@ -26,7 +26,7 @@ def parse_input( sys_argv ):
     ARGUMENT2 = None 
 
     if 1 == input_len:
-        print( 'Usage: runner.py COMMAND Argument' )
+        print( 'Usage: deployer.py COMMAND Argument' )
         print( '  > COMMANDs: ' + str( ACTIONS.keys() ) )
         exit(0)
 
@@ -69,14 +69,14 @@ def parse_input( sys_argv ):
         res = list_services()
         exit(1)            
 
-    if 'deploy_flask' == COMMAND:
+    if 'flask' == COMMAND:
 
         REPO        = ARGUMENT 
         ENTRY_POINT = ARGUMENT2
 
         if not REPO:
             print('ERR: command ['+COMMAND+'] expects 2 inputs' )
-            print(' > runner create_service <REPO> <ENTRY_POINT>' )
+            print(' > deployer flask <REPO> <ENTRY_POINT>' )
             print(' > <REPO> = public repo to be deployed<ENTRY_POINT>' )
             print(' > <ENTRY_POINT> = WSGI entry point, default="app:app"' )
             exit(1)
@@ -87,14 +87,14 @@ def parse_input( sys_argv ):
         res = deploy_flask(REPO, ENTRY_POINT)
         exit(1)  
 
-    if 'deploy_static' == COMMAND:
+    if 'static' == COMMAND:
 
         REPO     = ARGUMENT 
         NODE_VER = ARGUMENT2
 
         if not REPO:
             print('ERR: command ['+COMMAND+'] expects 2 inputs' )
-            print(' > runner create_service <REPO> <NODE_VER>' )
+            print(' > deployer static <REPO> <NODE_VER>' )
             print(' > <REPO> = public repo to be deployed<ENTRY_POINT>' )
             print(' > <NODE_VER> = Node Version, default='+NODE_14 )            
             exit(1)
