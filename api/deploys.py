@@ -109,9 +109,13 @@ def deploy_static(aRepo, aNodeVer=NODE_14):
 
         ownerId      = get_owner()
         service_name = nameFromRepo( aRepo ) + '-' + randStr()
+        build_cmd    = 'npm i ; npm run build'
 
         if not ownerId:
             raise Exception( 'Error getting owner' )
+
+        if 'yarn' in RENDER_BUILDER:
+            build_cmd = 'yarn ; yarn build'
 
         payload = {
             'autoDeploy': 'yes',
@@ -123,7 +127,7 @@ def deploy_static(aRepo, aNodeVer=NODE_14):
             'serviceDetails': {
                 'publishPath': 'build',
                 'pullRequestPreviewsEnabled': 'no',
-                'buildCommand': 'npm i ; npm run build'                
+                'buildCommand': build_cmd            
             },
             'type': 'static_site',
             'name': service_name,
