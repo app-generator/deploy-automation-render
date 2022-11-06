@@ -14,7 +14,11 @@ ACTIONS = {
     'all_services'   : ['NA'],
     'flask'          : ['NA'],
     'django'         : ['NA'],
+    'nodejs'         : ['NA'],
     'static'         : ['NA'],
+    'nodejs_api'     : ['NA'],
+    'django_api'     : ['NA'],
+    'flask_api'      : ['NA'],
 }
 
 def parse_input( sys_argv ):
@@ -106,6 +110,39 @@ def parse_input( sys_argv ):
         res = deploy_flask(REPO, ENTRY_POINT)
         exit(1)  
 
+    if 'nodejs' == COMMAND:
+
+        REPO        = ARGUMENT 
+        ENTRY_POINT = ARGUMENT2
+        NODE_VER    = ARGUMENT3
+
+        if not REPO:
+            print('ERR: command ['+COMMAND+'] expects 3 inputs' )
+            print(' > deployer ['+COMMAND+'] <REPO> <ENTRY_POINT>' )
+            print(' > <ENTRY_POINT> = APP entry point, default="app.js"' )            
+            print(' > <REPO> = public repo to be deployed<ENTRY_POINT>' )
+            print(' > <NODE_VER> = Node Version, default='+NODE_16 )               
+            exit(1)
+
+        if not NODE_VER:
+            NODE_VER = NODE_16
+        else:
+
+            if '12' in NODE_VER:
+                NODE_VER = NODE_12
+            elif '14' in NODE_VER:
+                NODE_VER = NODE_14
+            elif '16' in NODE_VER:
+                NODE_VER = NODE_16
+            elif '18' in NODE_VER:
+                NODE_VER = NODE_18
+            else:
+                # Default to 16
+                NODE_VER = NODE_16
+
+        res = deploy_nodejs(REPO, ENTRY_POINT, NODE_VER)
+        exit(1)  
+
     if 'static' == COMMAND:
 
         REPO     = ARGUMENT 
@@ -136,6 +173,27 @@ def parse_input( sys_argv ):
 
         res = deploy_static( REPO, NODE_VER )
         exit(1)          
+
+    if 'nodejs_api' == COMMAND:
+
+        REPO = ARGUMENT
+
+        res = deploy_api_nodejs( REPO )
+        exit(1) 
+
+    if 'flask_api' == COMMAND:
+
+        REPO = ARGUMENT
+
+        res = deploy_api_flask( REPO )
+        exit(1) 
+
+    if 'django_api' == COMMAND:
+
+        REPO = ARGUMENT
+
+        res = deploy_api_django( REPO )
+        exit(1) 
 
 # Entry point
 if __name__ == "__main__": 
