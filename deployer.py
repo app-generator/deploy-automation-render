@@ -82,7 +82,7 @@ def parse_input( sys_argv ):
         if not REPO:
             print('ERR: command ['+COMMAND+'] expects 2 inputs' )
             print(' > deployer ['+COMMAND+'] <REPO> <ENTRY_POINT>' )
-            print(' > <REPO> = public repo to be deployed<ENTRY_POINT>' )
+            print(' > <REPO> = public repo to be deployed' )
             print(' > <ENTRY_POINT> = WSGI entry point, default="core.wsgi:application"' )
             exit(1)
 
@@ -100,7 +100,7 @@ def parse_input( sys_argv ):
         if not REPO:
             print('ERR: command ['+COMMAND+'] expects 2 inputs' )
             print(' > deployer ['+COMMAND+'] <REPO> <ENTRY_POINT>' )
-            print(' > <REPO> = public repo to be deployed<ENTRY_POINT>' )
+            print(' > <REPO> = public repo to be deployed' )
             print(' > <ENTRY_POINT> = WSGI entry point, default="app:app"' )
             exit(1)
 
@@ -118,9 +118,9 @@ def parse_input( sys_argv ):
 
         if not REPO:
             print('ERR: command ['+COMMAND+'] expects 3 inputs' )
-            print(' > deployer ['+COMMAND+'] <REPO> <ENTRY_POINT>' )
+            print(' > deployer ['+COMMAND+'] <REPO> <ENTRY_POINT> <NODE_VER>' )
+            print(' > <REPO> = public repo to be deployed' )
             print(' > <ENTRY_POINT> = APP entry point, default="app.js"' )            
-            print(' > <REPO> = public repo to be deployed<ENTRY_POINT>' )
             print(' > <NODE_VER> = Node Version, default='+NODE_16 )               
             exit(1)
 
