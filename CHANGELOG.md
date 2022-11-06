@@ -1,5 +1,14 @@
 # Change Log
 
+## [1.0.5] 2022-11-06
+### Improvements
+
+- Added Support for NodejS
+- Added Support for specific AppSeed kits
+  - `NodeJS API` 
+  - `Flask API` 
+  - `Django API` 
+
 ## [1.0.4] 2022-11-05
 ### Improvements
 

@@ -8,9 +8,15 @@ Python wrapper for [Render](https://render.com/) Deployment API - actively suppo
 
 | Item | Python | Info |
 | --- | --- | --- |
-| Deploy Static Site | ✅ | [docs](./docs/python/deploy-static.md) |
-| Deploy Web Service `Flask` | ✅ | [docs](./docs/python/deploy-flask.md) |
+| Deploy Static Site          | ✅ | [docs](./docs/python/deploy-static.md) |
+| Deploy Web Service `Flask`  | ✅ | [docs](./docs/python/deploy-flask.md)  |
 | Deploy Web Service `Django` | ✅ | [docs](./docs/python/deploy-django.md) |
+| Deploy Web Service `NodeJS` | ✅ | [docs](./docs/python/deploy-nodejs.md) |
+| --- | --- | --- |
+| `AppSeed Specific` | --- | --- |
+| Deploy `Flask API` Service  | ✅ | [docs](./docs/python/deploy-flask-api.md)  |
+| Deploy `Django API` Service | ✅ | [docs](./docs/python/deploy-django-api.md) |
+| Deploy `NodeJS API` Service | ✅ | [docs](./docs/python/deploy-nodejs-api.md) |
 
 <br />
 
@@ -66,15 +72,21 @@ $ $env:DEBUG = "1"                           # enables verbose output
 | Item | Info | Sample Output | HELP |
 | --- | --- | --- | --- |
 | `python deployer.py` | CLI Help | `Usage: runner.py COMMAND ARGS` | - |
-| `python deployer.py check` | Print API_KEY | `rnd_TgNuy1N*****` | - |
-| `python deployer.py all_owners` | Print all owners | `['usr-ccteupaen****', 'tea-ccts5053t398****']` | - |
-| `python deployer.py owner` | Get First Owner | `rnd_TgNuy1N*****` | - |
+| `python deployer.py check` | Print API_KEY | `rnd_TgN***` | - |
+| `python deployer.py all_owners` | Print all owners | `['usr-cct***', 'tea-cct***']` | - |
+| `python deployer.py owner` | Get First Owner | `rnd_TgN***` | - |
 | --- | --- | --- | --- |
-| `python deployer.py django REPO_URL` | Deploy Django APP | ` > Deploy ID [dep-cdgjfbien0hj5ea9cbm0]` | - |
+| `python deployer.py nodejs REPO_URL` | Deploy NodeJS APP | ` > Deploy ID [dep-cdg***]` | - |
 | --- | --- | --- | --- |
-| `python deployer.py flask REPO_URL` | Deploy Flask APP | ` > Deploy ID [dep-cdgjfbien0hj5ea9cbm0]` | - |
+| `python deployer.py django REPO_URL` | Deploy Django APP | ` > Deploy ID [dep-cdg***]` | - |
 | --- | --- | --- | --- |
-| `python deployer.py static REPO_URL` | Deploy React, Vue | ` > Deploy ID [dep-cdgjfbien0hj5ea9cbm0]` | - |
+| `python deployer.py flask REPO_URL` | Deploy Flask APP | ` > Deploy ID [dep-cdg***]` | - |
+| --- | --- | --- | --- |
+| `python deployer.py static REPO_URL` | Deploy React, Vue | ` > Deploy ID [dep-cdg***]` | - |
+| --- | --- | --- | --- |
+| `python deployer.py nodejs_api <REPO_URL>` | [NodeJS API](https://github.com/app-generator/api-server-nodejs) | ` > Deploy ID [dep-cdg***]` | `AppSeed Specific` see [docs](./docs/python/deploy-nodejs-api.md) |
+| `python deployer.py flask_api  <REPO_URL>` | [Flask API](https://github.com/app-generator/api-server-flask)   | ` > Deploy ID [dep-cdg***]` | `AppSeed Specific` see [docs](./docs/python/deploy-flask-api.md)  |
+| `python deployer.py django_api <REPO_URL>` | [Django API](https://github.com/app-generator/api-server-django) | ` > Deploy ID [dep-cdg***]` | `AppSeed Specific` see [docs](./docs/python/deploy-django-api.md) |
 
 <br />
 
