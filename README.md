@@ -76,17 +76,17 @@ $ $env:DEBUG = "1"                           # enables verbose output
 | `python deployer.py all_owners` | Print all owners | `['usr-cct***', 'tea-cct***']` | - |
 | `python deployer.py owner` | Get First Owner | `rnd_TgN***` | - |
 | --- | --- | --- | --- |
-| `python deployer.py nodejs REPO_URL` | Deploy NodeJS APP | ` > Deploy ID [dep-cdg***]` | - |
+| `python deployer.py nodejs REPO_URL` | Deploy NodeJS | `> Deploy [dep-cdg***]` | - |
 | --- | --- | --- | --- |
-| `python deployer.py django REPO_URL` | Deploy Django APP | ` > Deploy ID [dep-cdg***]` | - |
+| `python deployer.py django REPO_URL` | Deploy Django | `> Deploy [dep-cdg***]` | - |
 | --- | --- | --- | --- |
-| `python deployer.py flask REPO_URL` | Deploy Flask APP | ` > Deploy ID [dep-cdg***]` | - |
+| `python deployer.py flask REPO_URL`  | Deploy Flask  | `> Deploy [dep-cdg***]` | - |
 | --- | --- | --- | --- |
 | `python deployer.py static REPO_URL` | Deploy React, Vue | ` > Deploy ID [dep-cdg***]` | - |
 | --- | --- | --- | --- |
-| `python deployer.py nodejs_api <REPO_URL>` | REPO: [NodeJS API](https://github.com/app-generator/api-server-nodejs) | ` > Deploy ID [dep-cdg***]` | [docs](./docs/python/deploy-nodejs-api.md) |
-| `python deployer.py flask_api  <REPO_URL>` | REPO: [Flask API](https://github.com/app-generator/api-server-flask)   | ` > Deploy ID [dep-cdg***]` | [docs](./docs/python/deploy-flask-api.md)  |
-| `python deployer.py django_api <REPO_URL>` | REPO: [Django API](https://github.com/app-generator/api-server-django) | ` > Deploy ID [dep-cdg***]` | [docs](./docs/python/deploy-django-api.md) |
+| `python deployer.py nodejs_api <REPO_URL>` | Repo [NodeJS API](https://github.com/app-generator/api-server-nodejs) | `> Deploy [dep-cdg***]` | [docs](./docs/python/deploy-nodejs-api.md) |
+| `python deployer.py flask_api  <REPO_URL>` | Repo [Flask API](https://github.com/app-generator/api-server-flask)   | `> Deploy [dep-cdg***]` | [docs](./docs/python/deploy-flask-api.md)  |
+| `python deployer.py django_api <REPO_URL>` | Repo [Django API](https://github.com/app-generator/api-server-django) | `> Deploy [dep-cdg***]` | [docs](./docs/python/deploy-django-api.md) |
 
 <br />
 
