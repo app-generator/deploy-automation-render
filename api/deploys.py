@@ -116,12 +116,16 @@ def deploy_flask(aRepo, aEntryPoint='app:app'):
         if not ownerId:
             raise Exception( 'Error getting owner' )
 
+        # Process AppSeed Specific 
+        if 'github.com/app-generator' in aRepo:
+            aEntryPoint = "run:app"    
+
         payload = {
             'autoDeploy': 'yes',
             'envVars': [
                 {
-                    "key": "DEBUG",
-                    "value": "1"
+                    "key"   : "DEBUG",
+                    "value" : "True"
                 }
             ],            
             'serviceDetails': {
@@ -136,7 +140,7 @@ def deploy_flask(aRepo, aEntryPoint='app:app'):
             'ownerId': ownerId,
             'repo': aRepo,
         }
-
+            
         response = requests.post(url, json=payload, headers=HEADERS)
 
         # HTTP 201 = Resource Created

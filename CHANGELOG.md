@@ -1,5 +1,11 @@
 # Change Log
 
+## [1.0.6] 2022-11-06
+### Improvements
+
+- Added specific for AppSeed
+  - For Flask the entry point is "run:app"
+  
 ## [1.0.5] 2022-11-06
 ### Improvements
 
