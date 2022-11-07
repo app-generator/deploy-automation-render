@@ -90,5 +90,19 @@ $ $env:DEBUG = "1"                           # enables verbose output
 
 <br />
 
+## Flask Sample 
+
+### Flask Star Admin 
+
+> In order to have a successful deploy, the environment should contain `API_KEY` and `OWNER_ID` (credit card attached)  
+
+```bash
+$ python.exe .\deployer.py flask https://github.com/app-generator/flask-star-admin 
+```
+
+In the above sample, "run:app" is used as `WSGI` entry point.    
+
+<br />
+
 ---
 [Render API Wrapper](https://www.youtube.com/watch?v=RRbmOhTzkYo) - Free Tool provided by [AppSeed](https://appseed.us/)
