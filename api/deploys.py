@@ -96,8 +96,8 @@ def deploy_django(aRepo, aEntryPoint=ENTRY_POINT_DJANGO, aRootPath=None):
 
         response_json = json.loads( response.text )
 
-        if DEBUG:
-            print( ' > RESPONSE ' + str( response_json ) )        
+        #if DEBUG:
+        #    print( ' > RESPONSE ' + str( response_json ) )        
 
         deploy_id  = response_json["deployId"]
         deploy_url = response_json["service"]["serviceDetails"]["url"]
@@ -123,6 +123,16 @@ def deploy_flask(aRepo, aEntryPoint=ENTRY_POINT_FLASK  , aRootPath=None):
         ownerId      = get_owner()
         service_name = nameFromRepo( aRepo ) + '-' + randStr() 
 
+        build_cmd    = 'pip install --upgrade pip ; pip install -r requirements.txt'
+        start_cmd    =  f"gunicorn {aEntryPoint}"
+
+        if aRootPath:
+            build_cmd = 'cd ' + aRootPath + ' ; ' + build_cmd
+            start_cmd = 'cd ' + aRootPath + ' ; ' + start_cmd
+            service_name = nameFromRepo( aRepo ) + '-API-' + randStr() 
+        else:
+            service_name = nameFromRepo( aRepo ) + '-' + randStr()    
+
         if not ownerId:
             raise Exception( 'Error getting owner' )
 
@@ -141,8 +151,8 @@ def deploy_flask(aRepo, aEntryPoint=ENTRY_POINT_FLASK  , aRootPath=None):
             'serviceDetails': {
                 'env':  'python',
                 "envSpecificDetails":{
-                    "buildCommand":"pip install --upgrade pip ; pip install -r requirements.txt",
-                    "startCommand":f"gunicorn {aEntryPoint}"
+                    "buildCommand": build_cmd,
+                    "startCommand": start_cmd
                 },
             },
             'type': 'web_service',
@@ -159,8 +169,8 @@ def deploy_flask(aRepo, aEntryPoint=ENTRY_POINT_FLASK  , aRootPath=None):
 
         response_json = json.loads( response.text )
 
-        if DEBUG:
-            print( ' > RESPONSE ' + str( response_json ) )        
+        #if DEBUG:
+        #    print( ' > RESPONSE ' + str( response_json ) )        
 
         deploy_id  = response_json["deployId"]
         deploy_url = response_json["service"]["serviceDetails"]["url"]
@@ -186,15 +196,20 @@ def deploy_nodejs(aRepo, aEntryPoint=ENTRY_POINT_NODEJS, aNodeVer=NODE_16, aRoot
         ownerId      = get_owner()
         service_name = nameFromRepo( aRepo ) + '-' + randStr() 
         build_cmd    = 'npm i && npm run build'
-
-        if aRootPath:
-            build_cmd = 'cd ' + aRootPath + ' ; ' + build_cmd
-
-        if not ownerId:
-            raise Exception( 'Error getting owner' )
+        start_cmd    = f"node " + aEntryPoint
 
         if 'yarn' in RENDER_BUILDER:
             build_cmd = 'yarn && yarn build'
+
+        if aRootPath:
+            build_cmd = 'cd ' + aRootPath + ' ; ' + build_cmd
+            start_cmd = 'cd ' + aRootPath + ' ; ' + start_cmd
+            service_name = nameFromRepo( aRepo ) + '-API-' + randStr() 
+        else:
+            service_name = nameFromRepo( aRepo ) + '-' + randStr()    
+
+        if not ownerId:
+            raise Exception( 'Error getting owner' )
 
         payload = {
             'autoDeploy': 'yes',
@@ -207,8 +222,8 @@ def deploy_nodejs(aRepo, aEntryPoint=ENTRY_POINT_NODEJS, aNodeVer=NODE_16, aRoot
             'serviceDetails': {
                 'env':  'node',
                 "envSpecificDetails":{
-                    "buildCommand":build_cmd,
-                    "startCommand":f"node " + aEntryPoint
+                    "buildCommand": build_cmd,
+                    "startCommand": start_cmd
                 },
             },
             'type': 'web_service',
@@ -225,8 +240,8 @@ def deploy_nodejs(aRepo, aEntryPoint=ENTRY_POINT_NODEJS, aNodeVer=NODE_16, aRoot
 
         response_json = json.loads( response.text )
 
-        if DEBUG:
-            print( ' > RESPONSE ' + str( response_json ) )        
+        #if DEBUG:
+        #    print( ' > RESPONSE ' + str( response_json ) )        
 
         deploy_id  = response_json["deployId"]
         deploy_url = response_json["service"]["serviceDetails"]["url"]
@@ -301,8 +316,8 @@ def deploy_static(aRepo, aNodeVer=NODE_16, aBuilder='yarn', aRootPath=None, aApi
 
         response_json = json.loads( response.text )
 
-        if DEBUG:
-            print( ' > RESPONSE ' + str( response_json ) )        
+        #if DEBUG:
+        #    print( ' > RESPONSE ' + str( response_json ) )        
 
         deploy_id  = response_json["deployId"]
         deploy_url = response_json["service"]["serviceDetails"]["url"]
@@ -424,7 +439,18 @@ def deploy_fullstack(aRepo):
             api_url = service_api_json["service"]["serviceDetails"]["url"] + '/api/'
 
         # Deploy UI 
-        service_ui_json = deploy_static(aRepo, NODE_16, 'yarn', dir_ui, api_url)
+        ui_nodejs_ver = NODE_16
+
+        try:
+            nodejs_all_vers = ui_json['build']['yarn']
+            ui_nodejs_ver = nodejs_all_vers.split(',')[-1] 
+
+            print( ' > UI, use NODE = ' + ui_nodejs_ver + ' from list=' + nodejs_all_vers)
+        except:
+            ui_nodejs_ver = NODE_16
+            pass 
+
+        service_ui_json = deploy_static(aRepo, ui_nodejs_ver, 'yarn', dir_ui, api_url)
 
         if not service_ui_json:
             raise Exception('Error deploying the UI')
