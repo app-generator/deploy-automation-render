@@ -28,9 +28,10 @@ RENDER_API_KEY = os.getenv("RENDER_API_KEY")
 RENDER_OWNER_ID = os.getenv("RENDER_OWNER_ID")
 
 # Entry points 
-ENTRY_POINT_DJANGO = 'core.wsgi:application'
-ENTRY_POINT_FLASK  = 'run:app' 
-ENTRY_POINT_NODEJS = 'app.js'
+ENTRY_POINT_DJANGO         = 'core.wsgi:application' # AppSeed specific
+ENTRY_POINT_FLASK          = 'run:app'               # AppSeed specific 
+ENTRY_POINT_NODEJS         = 'build/index.js'        # AppSeed specific 
+ENTRY_POINT_NODEJS_APP     = 'app.js'
 
 # api header
 HEADERS = {

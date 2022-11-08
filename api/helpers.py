@@ -3,20 +3,25 @@
 Copyright (c) 2019 - present AppSeed.us
 """
 
-import requests, random, string, json
+import requests, random, string, json, hashlib
 
 from .common   import *
 
-def randStr( aLen=3 ):
+def randStr( aLen=5 ):
     return ''.join(random.choices(string.ascii_letters + string.digits, k=aLen )).lower()
 
-def nameFromRepo( aRepoURL ):
+def nameFromRepo( aRepoURL, aHash=False):
 
     if not aRepoURL:
         return aRepoURL
 
     aRepoURL = aRepoURL.replace('.git', '')
-    return aRepoURL.split('/')[-1]
+    retVal = aRepoURL.split('/')[-1]
+
+    if not aHash:
+        return retVal
+
+    return hashlib.md5( retVal.encode('utf-8') ).hexdigest()[0 : 9]
 
 def pp_json( aJson ):
 
@@ -49,10 +54,13 @@ def github_repo_meta( aRepo ):
         dir_ui  = None 
 
         for k in inner_dirs.split(','):
-            if '-api' in k:
+            if 'api' in k:
                dir_api = k
             if '-ui' in k:
                dir_ui = k
+
+        if not dir_api or not dir_ui:
+            raise Exception('Error parsing deployer.json - DIRs not extracted')
 
         # print('> API [' +dir_api+ '] -> [' + dir_ui + ']')
 

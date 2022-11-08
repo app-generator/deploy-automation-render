@@ -58,9 +58,9 @@ def deploy_django(aRepo, aEntryPoint=ENTRY_POINT_DJANGO, aRootPath=None):
         start_cmd    =  f"gunicorn {aEntryPoint}"
 
         if aRootPath:
-            build_cmd = 'cd ' + aRootPath + ' ; ' + build_cmd
-            start_cmd = 'cd ' + aRootPath + ' ; ' + start_cmd
-            service_name = nameFromRepo( aRepo ) + '-API-' + randStr() 
+            build_cmd    = 'cd ' + aRootPath + ' ; ' + build_cmd
+            start_cmd    = 'cd ' + aRootPath + ' ; ' + start_cmd
+            service_name = nameFromRepo( aRepo, True ) + '-' + aRootPath
         else:
             service_name = nameFromRepo( aRepo ) + '-' + randStr()     
 
@@ -127,9 +127,9 @@ def deploy_flask(aRepo, aEntryPoint=ENTRY_POINT_FLASK  , aRootPath=None):
         start_cmd    =  f"gunicorn {aEntryPoint}"
 
         if aRootPath:
-            build_cmd = 'cd ' + aRootPath + ' ; ' + build_cmd
-            start_cmd = 'cd ' + aRootPath + ' ; ' + start_cmd
-            service_name = nameFromRepo( aRepo ) + '-API-' + randStr() 
+            build_cmd    = 'cd ' + aRootPath + ' ; ' + build_cmd
+            start_cmd    = 'cd ' + aRootPath + ' ; ' + start_cmd
+            service_name = nameFromRepo( aRepo, True ) + '-' + aRootPath
         else:
             service_name = nameFromRepo( aRepo ) + '-' + randStr()    
 
@@ -202,9 +202,9 @@ def deploy_nodejs(aRepo, aEntryPoint=ENTRY_POINT_NODEJS, aNodeVer=NODE_16, aRoot
             build_cmd = 'yarn && yarn build'
 
         if aRootPath:
-            build_cmd = 'cd ' + aRootPath + ' ; ' + build_cmd
-            start_cmd = 'cd ' + aRootPath + ' ; ' + start_cmd
-            service_name = nameFromRepo( aRepo ) + '-API-' + randStr() 
+            build_cmd    = 'cd ' + aRootPath + ' ; ' + build_cmd
+            start_cmd    = 'cd ' + aRootPath + ' ; ' + start_cmd
+            service_name = nameFromRepo( aRepo, True ) + '-' + aRootPath
         else:
             service_name = nameFromRepo( aRepo ) + '-' + randStr()    
 
@@ -273,9 +273,9 @@ def deploy_static(aRepo, aNodeVer=NODE_16, aBuilder='yarn', aRootPath=None, aApi
             build_cmd = 'yarn ; yarn build'
 
         if aRootPath:
-            build_cmd     = 'cd ' + aRootPath + ' ; ' + build_cmd
-            service_name  = nameFromRepo( aRepo ) + '-UI-' + randStr()
-            publish_path  = aRootPath + '/build'
+            build_cmd    = 'cd ' + aRootPath + ' ; ' + build_cmd
+            publish_path = aRootPath + '/build'
+            service_name = nameFromRepo( aRepo, True ) + '-' + aRootPath
         else:
             service_name = nameFromRepo( aRepo ) + '-' + randStr()   
 
@@ -424,19 +424,41 @@ def deploy_fullstack(aRepo):
             raise Exception( 'Error getting metadata for REPO' )     
             return None 
 
-        print(' FullStack > API [' +dir_api+ '] -> [' + dir_ui + ']')
+        print(' FullStack > API [' + str(dir_api) + '] -> [' + str(dir_ui) + ']')
 
         api_url          = None 
         service_api_json = None 
         service_ui_json  = None
 
+        # Deploy DJANGO
         if 'django' in dir_api:
             service_api_json = deploy_django(aRepo, ENTRY_POINT_DJANGO, dir_api)    
 
             if not service_api_json:
-                raise Exception('Error deploying the API')
+                raise Exception('Error deploying (DJANGO) API')
 
             api_url = service_api_json["service"]["serviceDetails"]["url"] + '/api/'
+
+        # Deploy FLASK
+        elif 'flask' in dir_api:
+            service_api_json = deploy_flask(aRepo, ENTRY_POINT_FLASK, dir_api)    
+
+            if not service_api_json:
+                raise Exception('Error deploying (FLASK) API')
+
+            api_url = service_api_json["service"]["serviceDetails"]["url"] + '/api/'
+
+        # Deploy NODEJ
+        elif 'nodejs' in dir_api:
+            service_api_json = deploy_nodejs(aRepo, ENTRY_POINT_NODEJS, NODE_16, dir_api)    
+
+            if not service_api_json:
+                raise Exception('Error deploying (NODEJS) API')
+
+            api_url = service_api_json["service"]["serviceDetails"]["url"] + '/api/'
+
+        else:
+            raise Exception('Error: Unsupported API: ' + dir_api)
 
         # Deploy UI 
         ui_nodejs_ver = NODE_16
