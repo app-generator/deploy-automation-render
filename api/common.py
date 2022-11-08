@@ -27,6 +27,11 @@ RENDER_API_KEY = os.getenv("RENDER_API_KEY")
 # Render authentication API
 RENDER_OWNER_ID = os.getenv("RENDER_OWNER_ID")
 
+# Entry points 
+ENTRY_POINT_DJANGO = 'core.wsgi:application'
+ENTRY_POINT_FLASK  = 'run:app' 
+ENTRY_POINT_NODEJS = 'app.js'
+
 # api header
 HEADERS = {
     'accept': 'application/json',

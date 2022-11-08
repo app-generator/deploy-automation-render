@@ -19,6 +19,7 @@ ACTIONS = {
     'nodejs_api'     : ['NA'],
     'django_api'     : ['NA'],
     'flask_api'      : ['NA'],
+    'fullstack'      : ['NA'],
 }
 
 def parse_input( sys_argv ):
@@ -28,7 +29,8 @@ def parse_input( sys_argv ):
 
     COMMAND   = ''
     ARGUMENT  = None 
-    ARGUMENT2 = None 
+    ARGUMENT2 = None
+    ARGUMENT3 = None 
 
     if 1 == input_len:
         print( 'Usage: deployer.py COMMAND Argument' )
@@ -42,6 +44,9 @@ def parse_input( sys_argv ):
 
     if input_len > 3:
         ARGUMENT2 = input_argv[3].lower()        
+
+    if input_len > 4:
+        ARGUMENT3 = input_argv[4].lower()        
 
     if COMMAND not in ACTIONS.keys():
 
@@ -151,7 +156,7 @@ def parse_input( sys_argv ):
         if not REPO:
             print('ERR: command ['+COMMAND+'] expects 2 inputs' )
             print(' > deployer ['+COMMAND+'] <REPO> <NODE_VER>' )
-            print(' > <REPO> = public repo to be deployed<ENTRY_POINT>' )
+            print(' > <REPO> = public repo to be deployed' )
             print(' > <NODE_VER> = Node Version, default='+NODE_14 )            
             exit(1)
 
@@ -194,6 +199,19 @@ def parse_input( sys_argv ):
 
         res = deploy_api_django( REPO )
         exit(1) 
+
+    if 'fullstack' == COMMAND:
+
+        REPO     = ARGUMENT 
+
+        if not REPO:
+            print('ERR: command ['+COMMAND+'] expects 1 input' )
+            print(' > deployer ['+COMMAND+'] <REPO>' )
+            print(' > <REPO> = public repo to be deployed' )
+            exit(1)
+
+        res = deploy_fullstack( REPO )
+        exit(1)          
 
 # Entry point
 if __name__ == "__main__": 

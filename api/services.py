@@ -23,10 +23,12 @@ def list_services():
         if 200 != response.status_code:
             raise Exception( response.text )
 
-        if DEBUG:
-            print( response.text ) 
+        json_data = json.loads( response.text )
 
-        return json.loads( response.text )
+        if DEBUG:
+            print( pp_json( json_data ) ) 
+
+        return json_data
 
     except Exception as e:
         print(e)
