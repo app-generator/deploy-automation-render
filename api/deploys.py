@@ -60,7 +60,7 @@ def deploy_django(aRepo, aEntryPoint=ENTRY_POINT_DJANGO, aRootPath=None):
         if aRootPath:
             build_cmd    = 'cd ' + aRootPath + ' ; ' + build_cmd
             start_cmd    = 'cd ' + aRootPath + ' ; ' + start_cmd
-            service_name = nameFromRepo( aRepo, True ) + '-' + aRootPath
+            service_name = nameFromRepo( aRepo, True ) + '-' + aRootPath + '-' + randStr(3) 
         else:
             service_name = nameFromRepo( aRepo ) + '-' + randStr()     
 
@@ -129,7 +129,7 @@ def deploy_flask(aRepo, aEntryPoint=ENTRY_POINT_FLASK  , aRootPath=None):
         if aRootPath:
             build_cmd    = 'cd ' + aRootPath + ' ; ' + build_cmd
             start_cmd    = 'cd ' + aRootPath + ' ; ' + start_cmd
-            service_name = nameFromRepo( aRepo, True ) + '-' + aRootPath
+            service_name = nameFromRepo( aRepo, True ) + '-' + aRootPath + '-' + randStr(3) 
         else:
             service_name = nameFromRepo( aRepo ) + '-' + randStr()    
 
@@ -195,16 +195,16 @@ def deploy_nodejs(aRepo, aEntryPoint=ENTRY_POINT_NODEJS, aNodeVer=NODE_16, aRoot
 
         ownerId      = get_owner()
         service_name = nameFromRepo( aRepo ) + '-' + randStr() 
-        build_cmd    = 'npm i && npm run build'
+        build_cmd    = 'npm i && npm run typeorm migration:run ; npm run build'
         start_cmd    = f"node " + aEntryPoint
 
         if 'yarn' in RENDER_BUILDER:
-            build_cmd = 'yarn && yarn build'
+            build_cmd = 'yarn && yarn typeorm migration:run && yarn build'
 
         if aRootPath:
             build_cmd    = 'cd ' + aRootPath + ' ; ' + build_cmd
             start_cmd    = 'cd ' + aRootPath + ' ; ' + start_cmd
-            service_name = nameFromRepo( aRepo, True ) + '-' + aRootPath
+            service_name = nameFromRepo( aRepo, True ) + '-' + aRootPath + '-' + randStr(3) 
         else:
             service_name = nameFromRepo( aRepo ) + '-' + randStr()    
 
@@ -355,7 +355,7 @@ def deploy_api_nodejs( aRepo='https://github.com/app-generator/api-server-nodejs
     try:
 
         ownerId      = get_owner()
-        service_name = nameFromRepo( aRepo ) + '-' + randStr() 
+        service_name = nameFromRepo( aRepo, True ) + '-' + aRootPath + '-' + randStr(3)  
         build_cmd    = 'yarn && yarn typeorm migration:run && yarn build'
 
         if aRootPath:
@@ -393,8 +393,8 @@ def deploy_api_nodejs( aRepo='https://github.com/app-generator/api-server-nodejs
 
         response_json = json.loads( response.text )
 
-        if DEBUG:
-            print( ' > RESPONSE ' + str( response_json ) )        
+        #if DEBUG:
+        #    print( ' > RESPONSE ' + str( response_json ) )        
 
         deploy_id  = response_json["deployId"]
         deploy_url = response_json["service"]["serviceDetails"]["url"]

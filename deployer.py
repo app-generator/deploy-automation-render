@@ -183,7 +183,11 @@ def parse_input( sys_argv ):
 
         REPO = ARGUMENT
 
-        res = deploy_api_nodejs( REPO )
+        if REPO:
+            res = deploy_api_nodejs( REPO )
+        else:    
+            res = deploy_api_nodejs( )
+
         exit(1) 
 
     if 'flask_api' == COMMAND:
@@ -202,7 +206,7 @@ def parse_input( sys_argv ):
 
     if 'fullstack' == COMMAND:
 
-        REPO     = ARGUMENT 
+        REPO = ARGUMENT 
 
         if not REPO:
             print('ERR: command ['+COMMAND+'] expects 1 input' )
