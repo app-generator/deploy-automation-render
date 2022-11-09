@@ -194,14 +194,22 @@ def parse_input( sys_argv ):
 
         REPO = ARGUMENT
 
-        res = deploy_api_flask( REPO )
+        if REPO:
+            res = deploy_api_flask( REPO )
+        else:    
+            res = deploy_api_flask( ) 
+        
         exit(1) 
 
     if 'django_api' == COMMAND:
 
         REPO = ARGUMENT
 
-        res = deploy_api_django( REPO )
+        if REPO:
+            res = deploy_api_django( REPO )
+        else:    
+            res = deploy_api_django( ) 
+
         exit(1) 
 
     if 'fullstack' == COMMAND:

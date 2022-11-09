@@ -8,15 +8,15 @@ Python wrapper for [Render](https://render.com/) Deployment API - actively suppo
 
 | Item | Python | Info |
 | --- | --- | --- |
-| Deploy Static Site          | ✅ | [docs](./docs/python/deploy-static.md) |
-| Deploy Web Service `Flask`  | ✅ | [docs](./docs/python/deploy-flask.md)  |
-| Deploy Web Service `Django` | ✅ | [docs](./docs/python/deploy-django.md) |
-| Deploy Web Service `NodeJS` | ✅ | [docs](./docs/python/deploy-nodejs.md) |
+| Deploy Static Site          | ✅ | [docs](./docs/deploy-static.md) |
+| Deploy Web Service `Flask`  | ✅ | [docs](./docs/deploy-flask.md)  |
+| Deploy Web Service `Django` | ✅ | [docs](./docs/deploy-django.md) |
+| Deploy Web Service `NodeJS` | ✅ | [docs](./docs/deploy-nodejs.md) |
 | --- | --- | --- |
 | `AppSeed Specific` | --- | --- |
-| Deploy `Flask API` Service  | ✅ | [docs](./docs/python/deploy-flask-api.md)  |
-| Deploy `Django API` Service | ✅ | [docs](./docs/python/deploy-django-api.md) |
-| Deploy `NodeJS API` Service | ✅ | [docs](./docs/python/deploy-nodejs-api.md) |
+| Deploy `Flask API` Service  | ✅ | [docs](./docs/deploy-flask-api.md)  |
+| Deploy `Django API` Service | ✅ | [docs](./docs/deploy-django-api.md) |
+| Deploy `NodeJS API` Service | ✅ | [docs](./docs/deploy-nodejs-api.md) |
 
 <br />
 
@@ -84,9 +84,9 @@ $ $env:DEBUG = "1"                           # enables verbose output
 | --- | --- | --- | - |
 | `python deployer.py static REPO_URL` | Deploy React, Vue | ` > Deploy ID [dep-cdg***]` | - |
 | --- | --- | --- | - |
-| `python deployer.py nodejs_api <REPO_URL>` | Repo [NodeJS API](https://github.com/app-generator/api-server-nodejs) | `> Deploy [dep-cdg***]` | [docs](./docs/python/deploy-nodejs-api.md) |
-| `python deployer.py flask_api  <REPO_URL>` | Repo [Flask API](https://github.com/app-generator/api-server-flask)   | `> Deploy [dep-cdg***]` | [docs](./docs/python/deploy-flask-api.md)  |
-| `python deployer.py django_api <REPO_URL>` | Repo [Django API](https://github.com/app-generator/api-server-django) | `> Deploy [dep-cdg***]` | [docs](./docs/python/deploy-django-api.md) |
+| `python deployer.py nodejs_api <REPO_URL>` | Repo [NodeJS API](https://github.com/app-generator/api-server-nodejs) | `> Deploy [dep-cdg***]` | [docs](./docs/deploy-nodejs-api.md) |
+| `python deployer.py flask_api  <REPO_URL>` | Repo [Flask API](https://github.com/app-generator/api-server-flask)   | `> Deploy [dep-cdg***]` | [docs](./docs/deploy-flask-api.md)  |
+| `python deployer.py django_api <REPO_URL>` | Repo [Django API](https://github.com/app-generator/api-server-django) | `> Deploy [dep-cdg***]` | [docs](./docs/deploy-django-api.md) |
 
 <br />
 

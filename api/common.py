@@ -14,12 +14,12 @@ NODE_18="18.0.0"
 DEBUG = os.getenv("DEBUG")
 
 # Render authentication API
-RENDER_BUILDER = os.getenv("RENDER_BUILDER", 'npm')
+RENDER_BUILDER = os.getenv("RENDER_BUILDER", 'yarn')
 
-if 'yarn' == RENDER_BUILDER.lower():
-    RENDER_BUILDER = 'yarn' 
+if 'npm' == RENDER_BUILDER.lower():
+    RENDER_BUILDER = 'npm' 
 else:
-    RENDER_BUILDER = 'npm'
+    RENDER_BUILDER = 'yarn'
 
 # Render authentication API
 RENDER_API_KEY = os.getenv("RENDER_API_KEY")
@@ -28,10 +28,10 @@ RENDER_API_KEY = os.getenv("RENDER_API_KEY")
 RENDER_OWNER_ID = os.getenv("RENDER_OWNER_ID")
 
 # Entry points 
-ENTRY_POINT_DJANGO         = 'core.wsgi:application' # AppSeed specific
-ENTRY_POINT_FLASK          = 'run:app'               # AppSeed specific 
-ENTRY_POINT_NODEJS         = 'build/index.js'        # AppSeed specific 
-ENTRY_POINT_NODEJS_APP     = 'app.js'
+ENTRY_POINT_DJANGO     = 'core.wsgi:application' # AppSeed specific
+ENTRY_POINT_FLASK      = 'run:app'               # AppSeed specific 
+ENTRY_POINT_NODEJS     = 'build/index.js'        # AppSeed specific 
+ENTRY_POINT_NODEJS_APP = 'app.js'
 
 # api header
 HEADERS = {

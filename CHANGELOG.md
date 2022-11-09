@@ -1,5 +1,11 @@
 # Change Log
 
+## [1.0.7] 2022-11-09
+### Improvements
+
+- Added `fullstack` handler
+  - manages LIVE deploys for all [generated react](https://appseed.us/generator/react/) apps
+
 ## [1.0.6] 2022-11-06
 ### Improvements
 

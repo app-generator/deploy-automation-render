@@ -275,7 +275,7 @@ def deploy_static(aRepo, aNodeVer=NODE_16, aBuilder='yarn', aRootPath=None, aApi
         if aRootPath:
             build_cmd    = 'cd ' + aRootPath + ' ; ' + build_cmd
             publish_path = aRootPath + '/build'
-            service_name = nameFromRepo( aRepo, True ) + '-' + aRootPath
+            service_name = nameFromRepo( aRepo, True ) + '-' + aRootPath + '-' + randStr(3)
         else:
             service_name = nameFromRepo( aRepo ) + '-' + randStr()   
 
