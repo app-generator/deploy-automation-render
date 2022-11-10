@@ -17,6 +17,7 @@ Python wrapper for [Render](https://render.com/) Deployment API - actively suppo
 | Deploy `Flask API` Service  | ✅ | [docs](./docs/deploy-flask-api.md)  |
 | Deploy `Django API` Service | ✅ | [docs](./docs/deploy-django-api.md) |
 | Deploy `NodeJS API` Service | ✅ | [docs](./docs/deploy-nodejs-api.md) |
+| Deploy `FullStack` Service  | ✅ | [docs](./docs/deploy-fullstack.md)  |
 
 <br />
 
