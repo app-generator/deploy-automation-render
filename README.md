@@ -39,7 +39,7 @@ $ pip install -r requirements.txt
 ```bash
 $ export RENDER_API_KEY=<RENDER_API_KEY>     # mandatory
 $ export RENDER_OWNER_ID=<RENDER_OWNER_ID>   # optional
-$ export RENDER_BUILDER='npm'                # optional, <NPM or YARN>, defaults to NPM
+$ export RENDER_BUILDER='yarn'               # optional, <NPM or YARN>, defaults to NPM
 $ export DEBUG=1                             # enables verbose output
 ```
 
@@ -50,7 +50,7 @@ $ export DEBUG=1                             # enables verbose output
 ```bash
 $ set RENDER_API_KEY=<RENDER_API_KEY>        # mandatory
 $ set RENDER_OWNER_ID=<RENDER_OWNER_ID>      # optional
-$ set RENDER_BUILDER='npm'                   # optional, <NPM or YARN>, defaults to NPM
+$ set RENDER_BUILDER='yarn'                  # optional, <NPM or YARN>, defaults to NPM
 $ set DEBUG=1                                # enables verbose output
 ```
 
@@ -61,7 +61,7 @@ $ set DEBUG=1                                # enables verbose output
 ```bash
 $ $env:RENDER_API_KEY = "<RENDER_API_KEY>"   # mandatory
 $ $env:RENDER_OWNER_ID = "<RENDER_OWNER_ID>" # optional
-$ $env:RENDER_BUILDER = "npm"                # optional, <NPM or YARN>, defaults to NPM
+$ $env:RENDER_BUILDER = "yarn"               # optional, <NPM or YARN>, defaults to NPM
 $ $env:DEBUG = "1"                           # enables verbose output
 ```
 
